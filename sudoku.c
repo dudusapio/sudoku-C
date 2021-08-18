@@ -69,10 +69,10 @@ int sudokuOk(int n, int sudoku[16][16],int *lin, int *col)
     // definir as regioes fazendo for dentro de 2 for 
     // verificar se na linha ha numeros iguais
     // verificar se na coluna ha numeros iguais
-    int i,j,p=0,k,l=0,countUm=0,countDois=0,countTres=0,countQuatro=0,countCinco=0,countSeis=0,countSete=0,countOito=0,countNove=0;
+    int i=0,j=n,p=0,k,l=0,countUm=0,countDois=0,countTres=0,countQuatro=0,countCinco=0,countSeis=0,countSete=0,countOito=0,countNove=0;
 
-            while(p < n){
-                for(k = 0;k < n; k++){
+            while(p < n * n){      
+                for(k = i;k < j; k++){      
                     if(sudoku[k][l] == 1)
                         countUm++; 
                     else if(sudoku[k][l] == 2)
@@ -92,13 +92,14 @@ int sudokuOk(int n, int sudoku[16][16],int *lin, int *col)
                                                 else if(sudoku[k][l] == 9)
                                                         countNove++;
                     if(countUm > 1 ||countDois > 1 ||countTres > 1 ||countQuatro > 1 ||countCinco > 1 ||countSeis > 1 ||countSete > 1 ||countOito > 1 ||countNove > 1 ){
+                        *lin = k;
+                        *col = l;
                         printf("Valor duplicado na posicao sudoku[%d][%d]",k,l);
                         return 0;
                     }
                     printf("sodoku[%d][%d] = %d\n",k,l,sudoku[k][l]);
                 }
                 
-           
                 l++;
                 if(l % 3 == 0){
                     countUm=0;
@@ -112,6 +113,12 @@ int sudokuOk(int n, int sudoku[16][16],int *lin, int *col)
                     countNove=0;
                     p++;
                 }
+                if(l >= n * n){
+                    l = 0;
+                    i = i + n;
+                    j = j + n;
+                }
+                
             }
     
 }
