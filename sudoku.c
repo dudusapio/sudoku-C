@@ -72,7 +72,7 @@ int sudokuOk(int n, int sudoku[16][16],int *lin, int *col)
     int i,j,p=0,k,l=0,countUm=0,countDois=0,countTres=0,countQuatro=0,countCinco=0,countSeis=0,countSete=0,countOito=0,countNove=0;
 
             while(p < n){
-                for(k = 0;k < n ; k++){
+                for(k = 0;k < n; k++){
                     if(sudoku[k][l] == 1)
                         countUm++; 
                     else if(sudoku[k][l] == 2)
@@ -91,17 +91,16 @@ int sudokuOk(int n, int sudoku[16][16],int *lin, int *col)
                                                     countOito++;
                                                 else if(sudoku[k][l] == 9)
                                                         countNove++;
-                    
+                    if(countUm > 1 ||countDois > 1 ||countTres > 1 ||countQuatro > 1 ||countCinco > 1 ||countSeis > 1 ||countSete > 1 ||countOito > 1 ||countNove > 1 ){
+                        printf("Valor duplicado na posicao sudoku[%d][%d]",k,l);
+                        return 0;
+                    }
                     printf("sodoku[%d][%d] = %d\n",k,l,sudoku[k][l]);
                 }
                 
            
                 l++;
                 if(l % 3 == 0){
-                    if(countUm != 1 ||countDois != 1 ||countTres != 1 ||countQuatro != 1 ||countCinco != 1 ||countSeis != 1 ||countSete != 1 ||countOito != 1 ||countNove != 1 ){
-                        printf("Valor duplicado na posicao sudoku[%d][%d]",k,l);
-                        return 0;
-                    }
                     countUm=0;
                     countDois=0;
                     countTres=0;
