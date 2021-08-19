@@ -66,11 +66,10 @@ void imprimeSudoku(int n, int sudoku[16][16])
 int sudokuOk(int n, int sudoku[16][16],int *lin, int *col)
 {
     // verificar se dentro da regiao(n) tem algum numero igual
-    // definir as regioes fazendo for dentro de 2 for 
     // verificar se na linha ha numeros iguais
     // verificar se na coluna ha numeros iguais
-    int i=0,j=n,p=0,k,l=0,a,b,countUm=0,countDois=0,countTres=0,countQuatro=0,countCinco=0,countSeis=0,countSete=0,countOito=0,countNove=0;
-
+    int i=0,j=n,p=0,k,l=0,a,c,d=0,b=0,countUm=0,countDois=0,countTres=0,countQuatro=0,countCinco=0,countSeis=0,countSete=0,countOito=0,countNove=0;
+    int countDez=0,countOnze=0,countDoze=0,countTreze=0,countQuatorze=0,countQuinze=0,countDezesseis=0;
             while(p < n * n){      
                 for(k = i;k < j; k++){      
                     if(sudoku[k][l] == 1)
@@ -91,11 +90,26 @@ int sudokuOk(int n, int sudoku[16][16],int *lin, int *col)
                                                     countOito++;
                                                 else if(sudoku[k][l] == 9)
                                                         countNove++;
-                    if(countUm > 1 ||countDois > 1 ||countTres > 1 ||countQuatro > 1 ||countCinco > 1 ||countSeis > 1 ||countSete > 1 ||countOito > 1 ||countNove > 1 ){
+                                                    else if(sudoku[k][l] =='A')
+                                                            countDez++;
+                                                        else if(sudoku[k][l] == 'B')
+                                                                countOnze++;
+                                                            else if(sudoku[k][l] == 'C')
+                                                                    countDoze++;
+                                                                else if(sudoku[k][l] == 'D')
+                                                                        countTreze++;
+                                                                    else if(sudoku[k][l] == 'E')
+                                                                            countQuatorze++;
+                                                                        else if(sudoku[k][l] == 'F')
+                                                                                countQuinze++;
+                                                                            else if(sudoku[k][l] == 'G')
+                                                                                    countDezesseis++;
+                    if(countUm > 1 ||countDois > 1 ||countTres > 1 ||countQuatro > 1 ||countCinco > 1 ||countSeis > 1 ||countSete > 1 ||countOito > 1
+                    ||countNove > 1|| countDez > 1 ||countOnze > 1 ||countDoze > 1 ||countTreze > 1 || countQuatorze > 1 || countQuinze > 1 || countDezesseis > 1){
                         *lin = k;
                         *col = l;
-                       // printf("Valor duplicado na posicao sudoku[%d][%d]\n",k,l);
-                       // return 0;
+                       // printf("Valor duplicado na regiao sudoku[%d][%d]\n",k,l);
+                        return 0;
                     }
                     //printf("sodoku[%d][%d] = %d\n",k,l,sudoku[k][l]);
                 }
@@ -111,6 +125,13 @@ int sudokuOk(int n, int sudoku[16][16],int *lin, int *col)
                     countSete=0;
                     countOito=0;
                     countNove=0;
+                    countDez=0;
+                    countOnze=0;
+                    countDoze=0;
+                    countTreze=0;
+                    countQuatorze=0;
+                    countQuinze=0;
+                    countDezesseis=0;
                     p++;
                 }
                 if(l >= n * n){
@@ -119,6 +140,7 @@ int sudokuOk(int n, int sudoku[16][16],int *lin, int *col)
                     j = j + n;
                 } 
             }
+
             while(b < n * n){
                 for(a = 0; a < n * n; a++){
                    if(sudoku[a][b] == 1)
@@ -139,7 +161,22 @@ int sudokuOk(int n, int sudoku[16][16],int *lin, int *col)
                                                     countOito++;
                                                 else if(sudoku[a][b] == 9)
                                                         countNove++;
-                    if(countUm > 1 ||countDois > 1 ||countTres > 1 ||countQuatro > 1 ||countCinco > 1 ||countSeis > 1 ||countSete > 1 ||countOito > 1 ||countNove > 1 ){
+                                                    else if(sudoku[a][b] == 'A')
+                                                            countDez++;
+                                                        else if(sudoku[a][b] == 'B')
+                                                                countOnze++;
+                                                            else if(sudoku[a][b] == 'C')
+                                                                    countDoze++;
+                                                                else if(sudoku[a][b] == 'D')
+                                                                        countTreze++;
+                                                                    else if(sudoku[a][b] == 'E')
+                                                                            countQuatorze++;
+                                                                        else if(sudoku[a][b] == 'F')
+                                                                                countQuinze++;
+                                                                            else if(sudoku[a][b] == 'G')
+                                                                                    countDezesseis++;
+                     if(countUm > 1 ||countDois > 1 ||countTres > 1 ||countQuatro > 1 ||countCinco > 1 ||countSeis > 1 ||countSete > 1 ||countOito > 1
+                    ||countNove > 1|| countDez > 1 ||countOnze > 1 ||countDoze > 1 ||countTreze > 1 || countQuatorze > 1 || countQuinze > 1 || countDezesseis > 1){
                         *lin = a;
                         *col = b;
                         printf("Valor duplicado na Linha sudoku[%d][%d]",a,b);
@@ -155,7 +192,75 @@ int sudokuOk(int n, int sudoku[16][16],int *lin, int *col)
                 countSete=0;
                 countOito=0;
                 countNove=0;
+                countDez=0;
+                countOnze=0;
+                countDoze=0;
+                countTreze=0;
+                countQuatorze=0;
+                countQuinze=0;
+                countDezesseis=0;
                 b++;
+            }
+
+            while(d < n * n){
+                for(c = 0 ; c < n*n; c++){
+                    if(sudoku[d][c] == 1)
+                        countUm++;
+                    else if(sudoku[d][c] == 2)
+                            countDois++;
+                        else if(sudoku[d][c] == 3)
+                                countTres++;
+                            else if(sudoku[d][c] == 4)
+                                    countQuatro++;
+                                else if(sudoku[d][c] == 5)
+                                        countCinco++;
+                                    else if(sudoku[d][c] == 6)
+                                            countSeis++;
+                                        else if(sudoku[d][c] == 7)
+                                                countSete++;
+                                            else if(sudoku[d][c] == 8)
+                                                    countOito++;
+                                                else if(sudoku[d][c] == 9)
+                                                        countNove++;
+                                                    else if(sudoku[d][c] == 'A')
+                                                            countDez++;
+                                                        else if(sudoku[d][c] == 'B')
+                                                                countOnze++;
+                                                            else if(sudoku[d][c] == 'C')
+                                                                    countDoze++;
+                                                                else if(sudoku[d][c] == 'D')
+                                                                        countTreze++;
+                                                                    else if(sudoku[d][c] == 'E')
+                                                                            countQuatorze++;
+                                                                        else if(sudoku[d][c] == 'F')
+                                                                                countQuinze++;
+                                                                            else if(sudoku[d][c] == 'G')
+                                                                                    countDezesseis++;
+                    if(countUm > 1 ||countDois > 1 ||countTres > 1 ||countQuatro > 1 ||countCinco > 1 ||countSeis > 1 ||countSete > 1 ||countOito > 1
+                    ||countNove > 1|| countDez > 1 ||countOnze > 1 ||countDoze > 1 ||countTreze > 1 || countQuatorze > 1 || countQuinze > 1 || countDezesseis > 1){
+                        *lin = d;
+                        *col = c;
+                        printf("Valor duplicado na Coluna sudoku[%d][%d]",d,c);
+                        return 0;
+                    }
+                }
+                countUm=0;
+                countDois=0;
+                countTres=0;
+                countQuatro=0;
+                countCinco=0;
+                countSeis=0;
+                countSete=0;
+                countOito=0;
+                countNove=0;
+                countDez=0;
+                countOnze=0;
+                countDoze=0;
+                countTreze=0;
+                countQuatorze=0;
+                countQuinze=0;
+                countDezesseis=0;
+                d++;
             }
 }
 
