@@ -82,7 +82,7 @@ int sudokuOk(int n, int sudoku[16][16], int *lin, int *col)
     int countDez = 0, countOnze = 0, countDoze = 0, countTreze = 0, countQuatorze = 0, countQuinze = 0, countDezesseis = 0;
     while (p < n * n)   
     {
-        for (k = i; k < j; k++)
+        for (k = i; k < j; k++) //percorre 3 linhas  sai do for incrementa l(coluna) percorre + 3 linhas 
         {
             if (sudoku[k][l] == 1)
                 countUm++;
@@ -127,7 +127,7 @@ int sudokuOk(int n, int sudoku[16][16], int *lin, int *col)
         }
 
         l++;
-        if (l % 3 == 0)
+        if (l % 3 == 0)     // se nao houver erro na regiao zera todos os contadores
         {
             countUm = 0;
             countDois = 0;
@@ -147,7 +147,7 @@ int sudokuOk(int n, int sudoku[16][16], int *lin, int *col)
             countDezesseis = 0;
             p++;
         }
-        if (l >= n * n)
+        if (l >= n * n) 
         {
             l = 0;
             i = i + n;
